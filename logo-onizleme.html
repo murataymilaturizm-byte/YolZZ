@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Logo Önizleme - Yolzz</title>
+<style>
+  body {
+    font-family: 'Poppins', -apple-system, sans-serif;
+    background: #F5F8FC;
+    margin: 0;
+    padding: 40px 20px;
+  }
+  h1 { color: #0A1F33; text-align: center; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #627388; margin-bottom: 40px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .variant {
+    background: #fff;
+    border-radius: 16px;
+    padding: 50px 40px;
+    margin-bottom: 20px;
+    border: 1px solid #DCE4EE;
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .variant-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1d71b8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .variant-desc {
+    font-size: 13px;
+    color: #627388;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+  .logo-box {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 80px;
+  }
+  .logo-dark-bg {
+    background: #0A1F33;
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .sizes {
+    display: flex; gap: 20px; align-items: center; justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* --- LOGO VARYANT 1: R'nin altında nokta (favicon gibi) --- */
+  .logo-v1 {
+    display: inline-flex;
+    align-items: baseline;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-family: 'Poppins', sans-serif;
+  }
+  .logo-v1 .rental {
+    color: #1d71b8;
+    position: relative;
+    display: inline-block;
+  }
+  .logo-v1 .rental .dot {
+    position: absolute;
+    width: 8px; height: 8px;
+    background: #e94e1b;
+    border-radius: 50%;
+    bottom: 10px;
+    left: 11px;
+  }
+  .logo-v1 .carzz { color: #e94e1b; }
+  .logo-v1.on-dark .rental { color: #fff; }
+  .logo-v1.on-dark .carzz { color: #e94e1b; }
+
+  /* --- LOGO VARYANT 2: R'nin noktası daha büyük + CARZZ altında da nokta --- */
+  .logo-v2 {
+    display: inline-flex;
+    align-items: baseline;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-family: 'Poppins', sans-serif;
+  }
+  .logo-v2 .rental {
+    color: #1d71b8;
+    position: relative;
+    display: inline-block;
+  }
+  .logo-v2 .rental .dot {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: #e94e1b;
+    border-radius: 50%;
+    bottom: 7px;
+    left: 10px;
+  }
+  .logo-v2 .carzz { color: #e94e1b; }
+  .logo-v2.on-dark .rental { color: #fff; }
+
+  /* --- LOGO VARYANT 3: R'nin noktası nokta olmadan R'nin ayağının ucunda hafif sarkma --- */
+  .logo-v3 {
+    display: inline-flex;
+    align-items: baseline;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-family: 'Poppins', sans-serif;
+  }
+  .logo-v3 .rental {
+    color: #1d71b8;
+    position: relative;
+    display: inline-block;
+  }
+  .logo-v3 .rental .dot {
+    position: absolute;
+    width: 7px; height: 7px;
+    background: #e94e1b;
+    border-radius: 50%;
+    bottom: -2px;
+    left: 13px;
+  }
+  .logo-v3 .carzz { color: #e94e1b; }
+  .logo-v3.on-dark .rental { color: #fff; }
+
+  /* --- LOGO VARYANT 4: SVG tabanlı profesyonel --- */
+  .logo-v4 svg { display: block; }
+
+  /* Boyut değişimi */
+  .s-sm { font-size: 24px; }
+  .s-sm .dot { width: 5px; height: 5px; bottom: 6px; left: 7px; }
+  .s-sm-v2 .dot { width: 6px; height: 6px; bottom: 4px; left: 6px; }
+  .s-sm-v3 .dot { width: 4px; height: 4px; bottom: -1px; left: 8px; }
+  .s-md { font-size: 32px; }
+  .s-md .dot { width: 6.5px; height: 6.5px; bottom: 8px; left: 9px; }
+  .s-md-v2 .dot { width: 8px; height: 8px; bottom: 5px; left: 8px; }
+  .s-md-v3 .dot { width: 5.5px; height: 5.5px; bottom: -1.5px; left: 10px; }
+
+  /* Favicon referansı */
+  .favicon-ref {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, #1d71b8, #0A1F33);
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: #fff;
+    font-weight: 800;
+    font-size: 36px;
+    font-family: 'Poppins', sans-serif;
+    flex-shrink: 0;
+  }
+  .favicon-ref::after {
+    content: "";
+    position: absolute;
+    width: 8px; height: 8px;
+    background: #e94e1b;
+    border-radius: 50%;
+    bottom: 16px; left: 34px;
+  }
+
+  .note {
+    background: #E8F1F9;
+    border-left: 4px solid #1d71b8;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #1F3A54;
+    margin: 30px 0 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🎨 Logo Önizleme — R'nin Altına Nokta</h1>
+  <p class="subtitle">4 farklı varyant. Beğendiğini söyle, siteye uygulayayım.</p>
+
+  <div class="note">
+    <strong>📌 Referans olarak favicon:</strong>
+    <span class="favicon-ref" style="vertical-align:middle; margin:0 12px;">R</span>
+    Bu stilde R harfinin altına turuncu nokta konulmuş. Şimdi aynı yaklaşımı kelime logomuza uyarlıyorum.
+  </div>
+
+  <!-- Varyant 1 -->
+  <div class="variant">
+    <div>
+      <div class="variant-label">Varyant 1</div>
+      <div class="variant-desc">Baştaki R'nin içine küçük turuncu nokta. Sadece R harfinde, zarif.</div>
+    </div>
+    <div class="logo-box">
+      <div class="sizes">
+        <div class="logo-v1 s-sm"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+        <div class="logo-v1 s-md"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+        <div class="logo-v1"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+      </div>
+    </div>
+    <div class="logo-box logo-dark-bg">
+      <div class="logo-v1 on-dark"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+    </div>
+  </div>
+
+  <!-- Varyant 2 -->
+  <div class="variant">
+    <div>
+      <div class="variant-label">Varyant 2</div>
+      <div class="variant-desc">Daha büyük nokta, daha alçakta. Favicon'a en yakın duran versiyon.</div>
+    </div>
+    <div class="logo-box">
+      <div class="sizes">
+        <div class="logo-v2 s-sm s-sm-v2"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+        <div class="logo-v2 s-md s-md-v2"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+        <div class="logo-v2"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+      </div>
+    </div>
+    <div class="logo-box logo-dark-bg">
+      <div class="logo-v2 on-dark"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+    </div>
+  </div>
+
+  <!-- Varyant 3 -->
+  <div class="variant">
+    <div>
+      <div class="variant-label">Varyant 3</div>
+      <div class="variant-desc">Nokta R'nin altında (harfin dışında). Gözü yormaz, sade.</div>
+    </div>
+    <div class="logo-box">
+      <div class="sizes">
+        <div class="logo-v3 s-sm s-sm-v3"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+        <div class="logo-v3 s-md s-md-v3"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+        <div class="logo-v3"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+      </div>
+    </div>
+    <div class="logo-box logo-dark-bg">
+      <div class="logo-v3 on-dark"><span class="rental">R<span class="dot"></span>ental</span><span class="carzz">carzz</span></div>
+    </div>
+  </div>
+
+  <!-- Varyant 4: SVG profesyonel -->
+  <div class="variant">
+    <div>
+      <div class="variant-label">Varyant 4</div>
+      <div class="variant-desc">Tamamen SVG — her yerde net görünür, retina uyumlu. R'nin iç boşluğunda nokta.</div>
+    </div>
+    <div class="logo-box">
+      <div class="sizes">
+        <!-- Small -->
+        <svg width="150" height="28" viewBox="0 0 320 60" xmlns="http://www.w3.org/2000/svg" style="font-family:Poppins,sans-serif;">
+          <text x="0" y="46" font-size="54" font-weight="800" fill="#1d71b8" letter-spacing="-1">Rental</text>
+          <circle cx="20" cy="38" r="4.5" fill="#e94e1b"/>
+          <text x="175" y="46" font-size="54" font-weight="800" fill="#e94e1b" letter-spacing="-1">carzz</text>
+        </svg>
+        <!-- Medium -->
+        <svg width="220" height="40" viewBox="0 0 320 60" xmlns="http://www.w3.org/2000/svg" style="font-family:Poppins,sans-serif;">
+          <text x="0" y="46" font-size="54" font-weight="800" fill="#1d71b8" letter-spacing="-1">Rental</text>
+          <circle cx="20" cy="38" r="4.5" fill="#e94e1b"/>
+          <text x="175" y="46" font-size="54" font-weight="800" fill="#e94e1b" letter-spacing="-1">carzz</text>
+        </svg>
+        <!-- Large -->
+        <svg width="280" height="50" viewBox="0 0 320 60" xmlns="http://www.w3.org/2000/svg" style="font-family:Poppins,sans-serif;">
+          <text x="0" y="46" font-size="54" font-weight="800" fill="#1d71b8" letter-spacing="-1">Rental</text>
+          <circle cx="20" cy="38" r="4.5" fill="#e94e1b"/>
+          <text x="175" y="46" font-size="54" font-weight="800" fill="#e94e1b" letter-spacing="-1">carzz</text>
+        </svg>
+      </div>
+    </div>
+    <div class="logo-box logo-dark-bg">
+      <svg width="220" height="40" viewBox="0 0 320 60" xmlns="http://www.w3.org/2000/svg" style="font-family:Poppins,sans-serif;">
+        <text x="0" y="46" font-size="54" font-weight="800" fill="#fff" letter-spacing="-1">Rental</text>
+        <circle cx="20" cy="38" r="4.5" fill="#e94e1b"/>
+        <text x="175" y="46" font-size="54" font-weight="800" fill="#e94e1b" letter-spacing="-1">carzz</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>💡 Önerilerim:</strong><br>
+    • <strong>Varyant 2</strong> → Favicon ile en uyumlu olan. Güçlü marka kimliği.<br>
+    • <strong>Varyant 4 (SVG)</strong> → Teknik olarak en sağlam, her boyutta net.<br>
+    • <strong>Varyant 1</strong> → Daha zarif ve ince. Minimalist tercih.<br>
+    • <strong>Varyant 3</strong> → Nokta harfin altında ayrı duruyor. Daha az dikkat çeker.
+  </div>
+
+  <p style="text-align:center; color:#627388; margin-top:30px;">
+    Beğendiğin varyantı söyle, headerdeki logo yerine koyayım.
+  </p>
+</div>
+
+</body>
+</html>

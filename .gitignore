@@ -1,0 +1,117 @@
+# ============================================================================
+# YOLZZ — .gitignore
+# ============================================================================
+# Bu dosya GitHub'a YÜKLENMEMESİ gereken dosyaları belirtir.
+# Hassas bilgi (şifre, log, kullanıcı dosyası) içeren her şey burada.
+# ============================================================================
+
+# === HASSAS YAPILANDIRMA (KESİNLİKLE GitHub'a yüklenmesin) ===
+config/config.php
+config/*.local.php
+config/secrets.php
+.env
+.env.*
+.env.local
+.env.production
+
+# === KULLANICI DOSYALARI (ayrı saklanır, GitHub'a girmez) ===
+uploads/
+public/uploads/
+storage/
+
+# === VERİTABANI YEDEKLERİ ===
+*.sql
+*.sql.gz
+*.sql.zip
+*.dump
+*.db
+*.sqlite
+*.sqlite3
+backups/
+yedek/
+
+# === LOG DOSYALARI ===
+logs/
+log/
+*.log
+error_log
+access_log
+debug.log
+php_errors.log
+
+# === SSL / SİSTEM (otomatik üretilen) ===
+.well-known/
+.htpasswd
+
+# === GEÇİCİ DOSYALAR ===
+*.bak
+*.tmp
+*.swp
+*.swo
+*~
+.cache/
+cache/
+tmp/
+
+# === VS Code ve IDE ===
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.example.json
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# === İŞLETİM SİSTEMİ ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# === COMPOSER (PHP paket yöneticisi - varsa) ===
+vendor/
+composer.phar
+
+# === NODE.JS (JS bağımlılıkları - varsa) ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# === DERLENMIŞ / ÜRETİLMİŞ ===
+*.min.css.map
+*.min.js.map
+dist/
+build/
+
+# === REBRAND DOSYALARI (artık gerekmez, geçici idi) ===
+yolzz-rebrand-*.zip
+yolzz-rebrand-*.sql
+yolzz-rebrand-*.txt
+
+# === KURULUM PAKETLERİ (Claude'dan gelen .zip'ler) ===
+*-paket.zip
+*-paket/
+*-uploads.zip
+
+# === DEBUG / TEST DOSYALARI ===
+test.php
+test-*.php
+debug.php
+debug-*.php
+phpinfo.php
+telefon-v2.php
+telefon-v3.php
+telefon-v4.php
+telefon-testi.php
+hata-testi.php
+
+# === HOSTING ÖZELDeki ===
+cgi-bin/
+.htaccess.backup
+public_ftp/
+

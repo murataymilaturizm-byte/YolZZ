@@ -1,0 +1,70 @@
+# ==============================================
+# RENTALCARZZ - URL Rewrite & Güvenlik
+# ==============================================
+
+<IfModule mod_negotiation.c>
+    Options -MultiViews
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# HTTPS yönlendirme
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Blog detay
+RewriteRule ^blog/([a-z0-9-]+)/?$ blog-detail.php?slug=$1 [L,QSA]
+
+# Kampanya detay
+RewriteRule ^kampanya/([a-z0-9-]+)/?$ kampanya-detail.php?slug=$1 [L,QSA]
+
+# Lokasyon detay
+RewriteRule ^lokasyon/([a-z0-9-]+)/?$ lokasyon.php?slug=$1 [L,QSA]
+
+# Sitemap.xml → sitemap.php
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# API
+RewriteRule ^api/([a-z0-9-]+)/?$ api/$1.php [L,QSA]
+
+# Admin
+RewriteRule ^admin/?$ admin/index.php [L]
+
+# Uzantısız URL'ler
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/(api|admin|assets|uploads)
+RewriteCond %{DOCUMENT_ROOT}/$1.php -f
+RewriteRule ^([a-z0-9-]+)/?$ $1.php [L,QSA]
+
+# CMS sayfaları
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/(api|admin|assets|uploads)
+RewriteRule ^([a-z0-9-]+)/?$ page.php?slug=$1 [L,QSA]
+
+# Klasör koruması
+RewriteRule ^(includes|config|lang)/ - [F,L]
+</IfModule>
+
+# ==============================================
+# GÜVENLİK
+# ==============================================
+
+Options -Indexes
+
+<Files "config.php">
+    Require all denied
+</Files>
+
+<Files "database.sql">
+    Require all denied
+</Files>
+
+<FilesMatch "\.(env|log|md|sql)$">
+    Require all denied
+</FilesMatch>
+
+AddDefaultCharset UTF-8

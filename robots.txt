@@ -1,0 +1,31 @@
+# Yolzz - robots.txt
+# https://yolzz.com
+
+User-agent: *
+Allow: /
+
+# Engellenen bölgeler
+Disallow: /admin/
+Disallow: /admin
+Disallow: /includes/
+Disallow: /config/
+Disallow: /api/
+Disallow: /uploads/private/
+Disallow: /checkout
+Disallow: /confirmation
+Disallow: /install.php
+Disallow: /telefon-testi.php
+Disallow: /telefon-v2.php
+Disallow: /telefon-v3.php
+Disallow: /telefon-v4.php
+Disallow: /hata-testi.php
+Disallow: /*?pickup_date=
+Disallow: /*?_csrf=
+Disallow: /*?debug=
+Disallow: /search?
+
+# Crawl-delay (nazik)
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://yolzz.com/sitemap.xml
